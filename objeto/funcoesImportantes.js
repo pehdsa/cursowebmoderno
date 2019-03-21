@@ -19,9 +19,16 @@ Object.entries(pessoa).forEach(e => {
 
 Object.defineProperty(pessoa, 'dataNascimento', {
     enumerable: true, // vai ser listada
-    writable: false, // não pode ser modificada
+    writable: false,  // não pode ser modificada
     value: '01/01/2019'
 });
 
 pessoa.dataNascimento = '01/01/2017'; // Não vai alterar pois travou o objeto com o "writable : false"
-console.log(pessoa.dataNascimento);
+console.log(pessoa);
+
+// Object.assign (2015)
+const obj = { a : 1 };
+const ob1 = { b: 2 };
+const ob2 = { c: 2 };
+Object.assign(obj, ob1, ob2);
+console.log(obj);
