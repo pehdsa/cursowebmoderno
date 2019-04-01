@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios HTML</title>
+
+    <style>        
+        nav { padding: 5px 0; }
+        nav a { margin: 0 10px; }
+        #conteudo { padding: 30px 0; }
+    </style>
+
+</head>
+<body>
+    
+    <header id="topo">
+        <h1>Exercícios HTML</h1>
+    </header>
+    
+    <nav>
+        <a href="" wm-link="exercicios/texto1.html">Texto 1</a> |
+        <a href="" wm-link="exercicios/texto2.html">Texto 2</a> |
+        <a href="" wm-link="exercicios/listas1.html">Lista 1</a> |
+        <a href="" wm-link="exercicios/listas2.html">Lista 2</a> |
+    </nav>
+    
+    <section id="conteudo">        
+    </section>
+
+    <footer id="rodape">        
+        Curso de web Moderno
+    </footer>
+
+    <script>
+        document.querySelectorAll('[wm-link]').forEach(link => {
+
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault();               
+                
+                fetch(link.getAttribute('wm-link')) // FIZ UMA REQUISIÇÃO AJAX DO HREF DO LINK
+                    .then(resp => resp.text()) // vai pegar o conteúdo HTML
+                    .then(html => conteudo.innerHTML = html)
+                
+            }
+        })
+    </script>
+
+</body>
+</html>
