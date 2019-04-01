@@ -1,0 +1,46 @@
+<div class="nav">
+
+<div class="bees left">
+    <span></span>
+    <div class="linha-1"></div>
+    <div class="linha-2"></div>
+</div>
+
+<div class="bees right">
+    <span></span>
+    <div class="linha-1"></div>
+    <div class="linha-2"></div>
+</div>
+
+</div>
+
+<style>
+
+    .nav { position: relative;max-width: 1000px;margin: 0 auto;height: 64px;background-color: #9d8032; }
+
+    .bees { position: absolute;top: 0;height: 64px; }
+    .bees::after { border-color: #9d8032; content: '';position: absolute;left: -27px;bottom: 0;width: 0;height: 0;border-style: solid;border-width: 32px 0px 32px 27px;border-left-color: transparent!important;-webkit-transform: scale(.9999);-moz-transform: scale(.9999);-ms-transform: scale(.9999);transform: scale(.9999);-webkit-transition: all 0.3s ease;-moz-transition: all 0.3s ease;-ms-transition: all 0.3s ease;transition: all 0.3s ease; }
+    .bees.left { left: 0;transform: translate(-100%,0) }
+    .bees.right { right: 0;transform: translate(100%,0) }
+    .bees.right::after { left: auto;right: -27px;border-width: 32px 27px 32px 0px;border-right-color: transparent!important; }
+
+    .bees span { position: absolute;content: '';display: inline-block;width: 40px;height: 40px;background: url(http://kiddy.cwsthemes.com/wp-content/themes/kiddy/img/bees.png) left center;animation: play .1s steps(3) infinite;-webkit-animation: play .1s steps(3) infinite; }
+    .bees.left span { z-index: 1;top: calc(50% - 33px);left: -77px; }
+    .bees.right span { left: auto;right: -77px;-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);-ms-transform: rotateY(180deg);transform: rotateY(180deg);  }
+
+    .bees > div { background-color: #9d8032; position: absolute;top: calc(50% - 11px);bottom: 0;right: -30px; width: 1px;transform: rotate(50deg) translate(4px,0px);-webkit-transform: rotate(50deg) translate(4px,0px); -moz-transform: rotate(50deg) translate(4px,0px);-ms-transform: rotate(50deg) translate(4px,0px);z-index: 1; }
+    .bees.left > div { transform: rotate(130deg) translate(4px,0px); -webkit-transform: rotate(130deg) translate(4px,0px);-moz-transform: rotate(130deg) translate(4px,0px);-ms-transform: rotate(130deg) translate(4px,0px);right: auto;left: -30px; }
+    .bees.left > div.linha-1 { transform: rotate(-130deg) translate(4px,0px);-webkit-transform: rotate(-130deg) translate(4px,0px);-moz-transform: rotate(-130deg) translate(4px,0px);-ms-transform: rotate(-130deg) translate(4px,0px);bottom: calc(50% - 11px);top: 0; }
+
+    .bees.bees.right > div.linha-1 { transform: rotate(-50deg) translate(4px,0px);-webkit-transform: rotate(-50deg) translate(4px,0px);-moz-transform: rotate(-50deg) translate(4px,0px);-ms-transform: rotate(-50deg) translate(4px,0px);bottom: calc(50% - 11px);top: 0; }
+
+    @keyframes play {
+        100% { background-position: -120px; }
+    }
+
+    @-webkit-keyframes play {
+        100% { background-position: -120px; }
+    }
+
+
+</style>
