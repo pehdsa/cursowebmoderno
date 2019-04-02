@@ -1,0 +1,67 @@
+<h2>Vídeos</h2>
+
+<div style="width: 800px;margin: 0 auto;">
+
+    <video controls controlsList="nodownload" width="100%" id="meuVideo">
+        <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4" />
+    </video>
+
+    <div wm-progresso="meuVideo" class="progresso">
+        <div></div>
+    </div>
+
+    <div style="padding: 15px 0 0 0;text-align: center">
+        <button wm-play="meuVideo">Play</button>
+        <button wm-pause="meuVideo">Pause</button>
+    </div>
+
+</div>
+
+<style>
+
+    .progresso { height: 5px;background: rgba(0,0,0,.3);margin: 15px 0;overflow: hidden; }
+    .progresso > div { background-color: red;width: 0;height: 100%; }
+
+</style>
+
+
+<script>
+
+    function configurarVideo(id){
+        const video = document.getElementById(id);
+        video.oncontextmenu = () => false; // desabilita o clique do botão direito do mouse
+
+        document.querySelectorAll(`[wm-play=${id}]`).forEach(play => {
+            play.onclick = function(e) {
+                const video = play.getAttribute('wm-play');
+                document.getElementById(video).play();
+            }
+        })
+
+        document.querySelectorAll(`[wm-pause=${id}]`).forEach(pause => {
+            pause.onclick = function(e) {
+                const video = pause.getAttribute('wm-pause');
+                document.getElementById(video).pause();
+            }
+        })
+
+    }
+
+
+    
+
+    /*
+    setInterval(() => {        
+        const currentTime = document.getElementById('meuVideo').currentTime;        
+        incrementaBarra(currentTime)
+    }, 1000)
+
+    const barra = document.querySelector('[wm-progresso] > div');
+
+    function incrementaBarra(procentagem) {
+        barra.style.width = procentagem+'%';
+    }*/
+
+    configurarVideo('meuVideo');
+
+</script>
