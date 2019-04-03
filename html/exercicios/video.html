@@ -31,36 +31,17 @@
         const video = document.getElementById(id);
         video.oncontextmenu = () => false; // desabilita o clique do botão direito do mouse
 
-        document.querySelectorAll(`[wm-play=${id}]`).forEach(play => {
-            play.onclick = function(e) {
-                const video = play.getAttribute('wm-play');
-                document.getElementById(video).play();
-            }
-        })
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play();            
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause();
 
-        document.querySelectorAll(`[wm-pause=${id}]`).forEach(pause => {
-            pause.onclick = function(e) {
-                const video = pause.getAttribute('wm-pause');
-                document.getElementById(video).pause();
-            }
-        })
+        setInterval(() => {
+            const porcentual = (video.currentTime / video.duration) * 100;
+            const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`);
+            valorDiv.style.width = `${porcentual}%`;
+            valorDiv.innerHTML = `${porcentual.toFixed(1)}%`;
+        },500)
 
-    }
-
-
-    
-
-    /*
-    setInterval(() => {        
-        const currentTime = document.getElementById('meuVideo').currentTime;        
-        incrementaBarra(currentTime)
-    }, 1000)
-
-    const barra = document.querySelector('[wm-progresso] > div');
-
-    function incrementaBarra(procentagem) {
-        barra.style.width = procentagem+'%';
-    }*/
+    } 
 
     configurarVideo('meuVideo');
 
