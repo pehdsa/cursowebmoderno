@@ -13,13 +13,15 @@
             padding: 0;
         }
         header {
+            position: sticky;
+            top: 0;left: 0;
             grid-area: cabecalho
         }
         nav{
             grid-area: navegacao
         }
         main { 
-            grid-area: conteudo;
+            grid-area: conteudo;            
         }
         footer {
             grid-area: rodape
@@ -29,6 +31,10 @@
             display: grid;
             grid-template-columns: 300px 1fr;
             grid-template-rows: 100px 1fr 100px;
+            grid-template-areas: 
+                'cabecalho cabecalho'
+                'navegacao conteudo'
+                'navegacao rodape'
         }
 
     </style>
@@ -36,10 +42,10 @@
 
 <body>
     
-    <main class="tag">CONTEÚDO</main>
-    <header class="tag">CABEÇALHO</header>
-    <footer class="tag">RODAPÉ</footer>
-    <nav class="tag">NAVEGAÇÃO</nav>
+    <main class="tag nolabel">CONTEÚDO</main>
+    <header class="tag nolabel">CABEÇALHO</header>
+    <footer class="tag nolabel">RODAPÉ</footer>
+    <nav class="tag nolabel">NAVEGAÇÃO</nav>
 
     <script src="js/tag.js"></script>
 </body>
