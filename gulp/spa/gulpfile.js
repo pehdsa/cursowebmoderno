@@ -1,20 +1,18 @@
-const gulp = require('gulp');
-const concat = require('gulp-concat');
-const sass = require('gulp-sass');
-const uglifycss = require('gulp-uglifycss');
 
-gulp.task('default', ['transformaCss','transformJs'], () => {
-    console.log('Feito!!!')
-})
+const gulp = require('gulp')
+const util = require('gulp-util')
+const sequence = require('run-sequence')
 
-gulp.task('transformaCss', () => {
-    gulp.src('src/assets/sass/index.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(uglifycss({ "uglyComments" : true }))
-        .pipe(concat('app.min.css'))
-        .pipe(gulp.dest('src/assets/css'))
-})
+require('./gulpTasks/app')
+require('./gulpTasks/deps')
+require('./gulpTasks/servidor')
 
-gulp.task('transformJs', () => {
-    console.log('JS')
+gulp.task('default', () => {
+    if(util.env.production) {
+        sequence('deps', 'app');
+        //gulp.start('deps', 'app')
+    } else {
+        sequence('deps', 'app', 'servidor');
+        //gulp.start('deps', 'app', 'servidor')
+    }
 })
